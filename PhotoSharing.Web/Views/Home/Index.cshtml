@@ -1,0 +1,14 @@
+﻿
+@{
+    ViewBag.Title = "Welcome to the Adventure Works Photo Sharing!";
+}
+
+<h1>Welcome to the Adventure Works Photo Sharing! Use this site to share your adventures</h1>
+<br/>
+<br />
+
+<h2>Lastest Photos</h2>
+
+@Html.Action("_PhotoGallery", "Photo", new { number = 3 })
+
+
