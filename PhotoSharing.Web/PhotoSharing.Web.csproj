@@ -142,6 +142,7 @@
     <Content Include="Views\Photo\Display.cshtml" />
     <Content Include="Views\Photo\Create.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Shared\_PhotoGallery.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
