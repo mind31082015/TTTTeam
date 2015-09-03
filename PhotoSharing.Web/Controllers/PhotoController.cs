@@ -106,5 +106,20 @@ namespace PhotoSharing.Web.Controllers
             }
         }
 
+        [ChildActionOnly]
+        public ActionResult _PhotoGallery(int number = 0)
+        {
+            var photos = context.Photos.ToList();
+            if (number != 0) {
+                photos = photos.Take(number).ToList();
+            }
+            return View(photos);
+
+            
+
+         
+
+        }
+
     }
 }
