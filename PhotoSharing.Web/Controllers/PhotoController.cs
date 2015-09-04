@@ -36,10 +36,10 @@ namespace PhotoSharing.Web.Controllers
         public ActionResult Create()
         {
             var photo = new Photo();
-
             photo.CreatedDate = DateTime.Now.Date;
+            photo.UserName = "UserName";
 
-            return View();
+            return View(photo);
         }
 
         [HttpPost]
@@ -47,13 +47,15 @@ namespace PhotoSharing.Web.Controllers
         {
             photo.CreatedDate = DateTime.Now.Date;
 
-            if (ModelState.IsValid && image != null) {
-                
-                    photo.ImageMimeType = image.ContentType;
-                    photo.PhotoFile = new byte[image.ContentLength];
-                    image.InputStream.Read(photo.PhotoFile, 0, image.ContentLength);
-                    context.Photos.Add(photo);
-                    return RedirectToAction("Index");
+            if (ModelState.IsValid && image != null)
+            {   
+                photo.ImageMimeType = image.ContentType;
+                photo.PhotoFile = new byte[image.ContentLength];
+                image.InputStream.Read(photo.PhotoFile, 0, image.ContentLength);
+                context.Photos.Add(photo);
+                context.SaveChanges();
+
+                return RedirectToAction("Index");
 
             }
             else
