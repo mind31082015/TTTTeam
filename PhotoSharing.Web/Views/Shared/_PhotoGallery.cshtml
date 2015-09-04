@@ -1,51 +1,20 @@
 ﻿@model IEnumerable<PhotoSharing.Web.Models.Photo>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Title)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.ImageMimeType)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Description)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CreatedDate)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.UserName)
-        </th>
-        <th></th>
-    </tr>
-
 @foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Title)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.ImageMimeType)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.CreatedDate)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.UserName)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.PhotoID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.PhotoID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.PhotoID })
-        </td>
-    </tr>
+    <h3>@Html.DisplayFor(modelItem => item.Title)</h3>
+
+    if (item.PhotoFile == null)
+    {
+        <img width="200px" src="">
+    }
+    else
+    {
+        <img src="@Url.Action("GetImage", new { id=item.PhotoID })">
+    }
+    <p>Created by: @Html.DisplayFor(modelItem => item.UserName)</p>
+    <p>Created on: @Html.DisplayFor(modelItem => item.CreatedDate)</p>
+    @Html.ActionLink("Display", "Display", new { id=item.PhotoID })
+
 }
 
-</table>
+

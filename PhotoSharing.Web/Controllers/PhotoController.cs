@@ -14,7 +14,8 @@ namespace PhotoSharing.Web.Controllers
         // GET: Photo
         public ActionResult Index()
         {
-            return View(context.Photos.ToList());
+            //return View(context.Photos.ToList());
+            return View();
         }
 
         public ActionResult Display(int id)
